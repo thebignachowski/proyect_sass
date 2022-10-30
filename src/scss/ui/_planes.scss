@@ -1,0 +1,87 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.planes {
+    margin-top: 5rem;
+    padding: 3rem 0;
+    background-color: v.$secundario;
+
+    @include m.tablet {
+        padding: 10rem;
+    }
+
+    h2 {
+        @include m.headingBorder( v.$blanco, v.$primario);
+    }
+
+    .descripcion {
+        color: v.$blanco;
+    }
+}
+
+.nuestros-planes {
+    display: flex;
+    flex-direction: column;
+    @include m.tablet {
+        flex-direction: row;
+        max-width: 80rem;
+        margin-inline: auto;
+        margin-block-start: 10rem;
+    }
+
+    .plan {
+        flex-grow: 1;
+        background-color: v.$blanco;
+        padding: 16rem 4rem 4rem 4rem;
+        border-bottom: 1px solid #E1E1E1;
+        text-align: center;
+
+        @include m.tablet {
+            border: none;
+            transition-property: transform;
+            transition-duration: 500ms;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        .precio {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .listado {
+            li{
+                margin-bottom: 2rem;
+
+                &:last-of-type {
+                    margin: 0;
+                }
+            }
+        }
+
+        &.inicio {
+            @include m.iconoBg('../img/icono_inicio.svg');
+        }
+
+        &.negocio {
+            background-color: v.$primario;
+            order: -1;
+            @include m.iconoBg('../img/icono_negocio.svg');
+
+            @include m.tablet {
+                order: unset;
+                margin-block: -5rem;
+                border-radius: 2rem;
+                background-position: 50% 7rem;
+                padding-top: calc(16rem + 5rem);
+                z-index: 100;
+            }
+        }
+
+        &.pro {
+            @include m.iconoBg('../img/icono_pro.svg');
+        }
+    }
+}
